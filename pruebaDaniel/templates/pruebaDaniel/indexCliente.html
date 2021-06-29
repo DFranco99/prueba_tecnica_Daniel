@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+        <title>{% block titulo %}Lista Clientes{% endblock titulo %}</title>
+    </head>
+
+    <body>
+    {% block cuerpo %}
+
+    <h1> Lista Clientes</h1>
+
+    <table border="2">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Opciones</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {%for cliente in clientes%}
+                <tr>
+                    <td>{{cliente.nombre}}</td>
+                    <td>{{cliente.apellido}}</td>
+                    <td><a href="{% url 'editCliente' cliente.id %}">EDITAR</a>|<a href="{% url 'deleteCliente' cliente.id %}">BORRAR</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock cuerpo %}
+    </body>
+</html>

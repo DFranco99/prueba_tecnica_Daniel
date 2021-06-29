@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+        <title>{% block titulo %}Lista Clientes{% endblock titulo %}</title>
+    </head>
+
+    <body>
+    {% block cuerpo %}
+
+    <h1> Lista Productos</h1>
+
+    <table border="2">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Opciones</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {%for producto in productos%}
+                <tr>
+                    <td>{{producto.tipo}}</td>
+                    <td>{{producto.codigo}}</td>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td><a href="{% url 'editProducto' producto.id %}">EDITAR</a>|<a href="{% url 'deleteProducto' producto.id %}">BORRAR</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock cuerpo %}
+    </body>
+</html>
